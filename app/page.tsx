@@ -2,27 +2,30 @@ import { sanityFetch } from "@/sanity/lib/live";
 import { HOMEPAGE_QUERY, ANNOUNCEMENTS_QUERY, MOBILE_PANTRY_QUERY } from "@/sanity/lib/queries";
 import { PortableText } from "next-sanity";
 import Image from "next/image";
+import Link from "next/link";
+import type { PortableTextBlock } from "@portabletext/types";
+import type { SanityImageSource } from "@sanity/image-url/lib/types/types";
 import { urlFor } from "@/sanity/lib/image";
 import Navigation from "@/components/Navigation";
 
 interface HomepageData {
   pantryName: string;
   tagline?: string;
-  mainDescription?: any[];
+  mainDescription?: PortableTextBlock[];
   hours?: string;
   address?: string;
   contactInfo?: string;
   donationLink?: string;
-  donationQr?: any;
-  gallery?: any[];
+  donationQr?: SanityImageSource;
+  gallery?: SanityImageSource[];
 }
 
 interface Announcement {
   _id: string;
   title: string;
   date: string;
-  content?: any[];
-  image?: any;
+  content?: PortableTextBlock[];
+  image?: SanityImageSource;
 }
 
 interface MobilePantrySchedule {
@@ -47,7 +50,7 @@ export default async function Home() {
             Welcome
           </h1>
           <p className="mb-8 text-2xl text-stone-600 leading-relaxed">
-            Visit <a href="/studio" className="text-primary hover:text-primary-dark font-semibold underline">/studio</a> to create your homepage content.
+            Visit <Link href="/studio" className="text-primary hover:text-primary-dark font-semibold underline">/studio</Link> to create your homepage content.
           </p>
         </div>
       </div>
@@ -414,7 +417,7 @@ export default async function Home() {
               How We Help
             </h2>
             <p className="text-xl text-gray-700 leading-relaxed max-w-3xl mx-auto">
-              Located in the heart of Eudora, we're here to support our neighbors with compassion,
+              Located in the heart of Eudora, we&apos;re here to support our neighbors with compassion,
               dignity, and essential resources every Wednesday.
             </p>
           </div>
@@ -514,8 +517,8 @@ export default async function Home() {
                 Serving the Eudora Community
               </h3>
               <p className="text-xl text-gray-300 leading-relaxed mb-6">
-                We're proud to serve our neighbors right here in Eudora, Kansas. Whether you're facing a temporary
-                setback or ongoing challenges, we're here for you with no judgment—only support.
+                We&apos;re proud to serve our neighbors right here in Eudora, Kansas. Whether you&apos;re facing a temporary
+                setback or ongoing challenges, we&apos;re here for you with no judgment—only support.
               </p>
               <div className="inline-flex items-center gap-3 bg-primary/20 px-6 py-3 rounded-full">
                 <svg className="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -533,7 +536,7 @@ export default async function Home() {
                 We Depend 100% on Donations
               </h3>
               <p className="text-xl leading-relaxed max-w-2xl mx-auto">
-                Every contribution makes a direct impact. Here's how you can help support our mission.
+                Every contribution makes a direct impact. Here&apos;s how you can help support our mission.
               </p>
             </div>
 
@@ -837,7 +840,7 @@ export default async function Home() {
           <div className="bg-gradient-to-r from-primary to-primary-dark p-12 lg:p-16 rounded-2xl">
             <div className="max-w-4xl mx-auto text-center">
               <h3 className="text-3xl sm:text-4xl lg:text-5xl font-black text-charcoal mb-6 leading-tight" style={{ fontFamily: 'var(--font-space-grotesk)' }}>
-                Need Help? We're Here For You
+                Need Help? We&apos;re Here For You
               </h3>
               <p className="text-xl text-charcoal/80 mb-10 leading-relaxed">
                 Curbside Pickup • Inside Shopping • Home Delivery • Emergency Assistance
@@ -886,7 +889,7 @@ export default async function Home() {
             </div>
 
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-              {homepage.gallery.map((image: any, index: number) => (
+              {homepage.gallery.map((image: SanityImageSource, index: number) => (
                 <div
                   key={index}
                   className="relative overflow-hidden rounded-lg aspect-square"

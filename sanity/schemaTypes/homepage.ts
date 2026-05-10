@@ -43,6 +43,11 @@ export default defineType({
       type: "url",
     }),
     defineField({
+      name: "facebookUrl",
+      title: "Facebook Page URL",
+      type: "url",
+    }),
+    defineField({
       name: "donationQr",
       title: "Donation QR Code",
       type: "image",

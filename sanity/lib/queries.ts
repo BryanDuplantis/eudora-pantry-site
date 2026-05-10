@@ -10,6 +10,7 @@ export const HOMEPAGE_QUERY = defineQuery(`
     contactInfo,
     donationLink,
     donationQr,
+    facebookUrl,
     gallery
   }
 `);
